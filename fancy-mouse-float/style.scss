@@ -1,0 +1,190 @@
+$gap: 30px;
+$pink: #f7acbc;
+$roseate: #f05b72;
+$light-red: #d93a49;
+$red: #d71345;
+$dark-red: #b22c46;
+$orange: #f47920;
+$yellow: #ffd400;
+$dark-yellow: #ffc20e;
+$purple: #9b59b6;
+$light-blue: #77d5d4;
+$blue: #3498db;
+$dark-blue: #2980b9;
+$green: #2ecc71;
+$light-green: #52be7f;
+$dark-green: #27ae60;
+$brown: #843900;
+$sliver: #8492A6;
+$light-sliver: #99A9BF;
+$light-black: #324057;
+$black: #130c0e;
+$white: #fffffb;
+$light-gray: #E5E9F2;
+$gray: #D3DCE6;
+$tr: transparent;
+$animation_time: .5s;
+
+@mixin flex-center {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+*, *::after, *::before {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+body {
+	width: 100%;
+	height: 100%;
+}
+
+.container {
+	position: absolute;
+	margin: auto;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	width: 600px;
+	height: 400px;
+	img {
+		width: 100%;
+		height: 100%;
+		transition: filter $animation_time + 1s ease-in-out;
+	}
+
+	.caption {
+		position: absolute;
+		padding: $gap;
+		width: 100%;
+		height: 100%;
+		z-index: 1;
+
+		.title {
+			position: relative;
+			width: 100%;
+			height: 100%;
+			text-align: center;
+			@include flex-center;
+			flex-flow: wrap column; 
+			opacity: 0;
+			text-shadow: 1px 1px 2px rgba(0, 0, 0, .26);
+			box-shadow: 0 0 30px 20px rgba(0, 0, 0, .46);
+			transition: opacity $animation_time ease-in-out;
+
+			&::before {
+				content: '';
+				position: absolute;
+				left: 0;
+				top: 50%;
+				width: 100%;
+				height: 0;
+				overflow: hidden;
+				border: 3px solid $white;
+				border-width: 0 3px;
+				visibility: hidden;
+				transition: all $animation_time ease-in-out;
+			}
+
+			&::after {
+				content: '';
+				position: absolute;
+				left: 50%;
+				top: 0;
+				width: 0;
+				height: 100%;
+				overflow: hidden;
+				border: 3px solid $white;
+				border-width: 3px 0;
+				visibility: hidden;
+				transition: all $animation_time ease-in-out;
+			}
+
+			a {
+				position: relative;
+				font-size: 15px;
+				color: $blue;
+				z-index: 1;
+				text-decoration: none;
+			}
+		}
+	}
+	/*  流光效果  */
+	.streamer {
+		background-image: -webkit-linear-gradient(left, $blue, $orange 10%, $red 20%, $pink 30%, $yellow 40%, $blue 50%, $orange 60%, $red 70%, $pink 80%, $yellow 90%, $blue);
+		-webkit-text-fill-color: transparent;
+		-webkit-background-clip: text;
+		background-size: 200%;
+		-webkit-background-size: 200%;
+		animation: streamer 5s infinite linear;
+	}
+
+	/*  滑动出现  */
+	.slideIn {
+		opacity: 0;
+		transform: translate(0, 20px);
+		transition: all $animation_time ease-in-out;
+	}
+
+	/*  呼吸效果  */
+	.breathe {
+        animation: breathe 5s infinite linear;
+	}
+
+	&:hover {
+		img {
+			filter: blur(2px);
+		}
+
+		.title {
+			opacity: 1;
+
+			&::before {
+				height: 100%;
+				top: 0;
+				visibility: visible;
+			}
+			&::after {
+				width: 100%;
+				left: 0;
+				visibility: visible;
+			}
+		}
+
+		.slideIn {
+			opacity: 1;
+			transform: translate(0);
+		}
+	}
+}
+
+@keyframes streamer {
+    0%  {
+    	background-position: 0 0;
+    }
+    100% {
+    	background-position: -100% 0;
+    }
+}
+
+@keyframes breathe {
+    0%  {
+    	color: $blue;
+    }
+    25% {
+    	color: $red;
+    }
+    50%  {
+    	color: $pink;
+    }
+    75% {
+    	color: $red;
+    }
+    0%  {
+    	color: $blue;
+    }
+}
