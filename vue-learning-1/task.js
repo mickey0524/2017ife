@@ -1,10 +1,8 @@
 function Observer(obj) {
-	var result = {};
 	for(var i in obj) {
-		result.i = obj.i;
-		Object.defineProperty(result, i, {
+		Object.defineProperty(obj, i, {
 			set : function(newValue) {
-				result.i = newValue;
+				obj.i = newValue;
 				console.log('你设置了 ' + i + ', 新的值为' + newValue);
 			},
 			get : function() {
@@ -14,7 +12,7 @@ function Observer(obj) {
 			}
 		})
 	}
-	return { data : result };
+	return { data : obj };
 }
 
 var app1 = new Observer({
