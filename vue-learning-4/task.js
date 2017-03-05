@@ -8,7 +8,7 @@ function Vue(obj) {
 	var data = obj.data;
 
 	var html = element.innerHTML;
-	var result = str.match(pattern);
+	var result = html.match(pattern);
 	if(result != null) {
 		var leftIndex = 0;
 		var rightIndex = 0;
