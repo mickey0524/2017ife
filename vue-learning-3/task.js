@@ -59,7 +59,7 @@ Observer.prototype.$watch = function(attr, callback) {
 }
 
 /**
- * @params {property} attr 需要监听改变的数据
+ * @params {property} observer 当前层次的observer
  * @params {function} callback 处理数据改变的回调函数
  */
 var deepbind = function(observer, callback) {
