@@ -1,0 +1,117 @@
+* {
+	margin: 0;
+	padding: 0;
+	vertical-align: middle;
+}
+
+body {
+	font-family : "Lucida Grande", Verdana, Lucida, Arial, Helvetica, "宋体", sans-serif;
+}
+
+.container {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	text-align: center;
+}
+
+.pseudo-elements {
+	margin-bottom: 20px;
+}
+
+.pseudo-elements .checkbox, .pseudo-elements .radio {
+	position: relative;
+	display: inline-block;
+}
+
+input {
+	opacity: 0;
+}
+
+/**
+ * 伪元素实现
+ */
+
+#check+label {
+	width: 15px;
+	height: 15px;
+	position: absolute;
+	left: -3px;
+	top: 3px;
+	border: 1px solid #CCCCCC;
+	border-radius: 3px;
+	cursor: pointer;
+}
+
+#check:checked+label {
+    border:1px solid #d73d32;	
+}
+
+#check:checked+label::after {
+	content: '\2714';
+	color: red;
+	position: absolute;
+	left: 2px;
+	top: -2px;
+	font-size: 14px;
+}
+
+#man+label, #woman+label {
+	width: 15px;
+	height: 15px;
+	position: absolute;
+	left: 0;
+	top: 3px;
+	border: 1px solid #CCCCCC;
+	border-radius: 100%;
+	cursor: pointer;
+}
+
+#woman+label {
+	left: 18px;
+}
+
+#man:checked+label, #woman:checked+label {
+	border:1px solid #d73d32;	
+}
+
+#man:checked+label::before, #woman:checked+label::before {
+	content: '';
+	width: 8px;
+	height: 8px;
+	background: #d73d32;
+	border-radius: 100%;
+	position: absolute;
+	left: 4px;
+	top: 4px;
+}
+
+/**
+ * 雪碧图实现
+ */
+
+.checkBox_sprite+label, .radioBox_sprite+label{
+  width: 16px;
+  height: 16px;
+  border: none;
+  display: inline-block;
+  background: url('bg.png') no-repeat;
+  cursor: pointer;
+}
+
+.checkBox_sprite+label {
+  background-position: -25px -32px;
+}
+
+.radioBox_sprite+label {
+  background-position: -24px -10px;
+}
+
+.checkBox_sprite:checked+label {
+  background-position: -60px -32px;
+}
+
+.radioBox_sprite:checked+label {
+  background-position: -59px -10px;
+}
