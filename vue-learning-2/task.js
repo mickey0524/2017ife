@@ -95,6 +95,10 @@ app.$watch('b', function(oldVal, newVal) {
 	console.log('b原来的值是' + oldVal + '，现在的值是' + newVal);
 })
 
+app.$watch('c', function(oldVal, newVal) {
+  console.log('我的c发生了变化，可能是d发生了变化，也可能是e发生了变化');
+})
+
 app.data.a;
 app.data.c.d;
 app.data.b = 19;

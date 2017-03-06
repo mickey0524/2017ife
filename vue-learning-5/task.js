@@ -24,7 +24,7 @@ Vue.prototype.init = function() {
 		for(var j = 0; j < result.length; j++) {
 			leftIndex = html.indexOf('{', rightIndex);
 			rightIndex = html.indexOf('}', rightIndex + 2);
-			var text = html.slice(leftIndex + 2, rightIndex);
+			var text = html.slice(leftIndex + 2, rightIndex).trim();
 			var changeText = getData(data, text.split('.'));
 			html = html.slice(0, leftIndex) + changeText + html.slice(rightIndex + 2);
 			if(this.memoryObj[changeText]) {
@@ -65,7 +65,7 @@ Vue.prototype.dataBind = function() {
 function getData(data, arr) {
 	var result = data;
 	for(var i in arr) {
-		result = result[arr[i].trim()];
+		result = result[arr[i]];
 	}
 	console.log(result);
 	return result;
