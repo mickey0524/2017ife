@@ -1,0 +1,48 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	font-family : "Lucida Grande", Verdana, Lucida, Arial, Helvetica, "宋体", sans-serif;
+}
+
+.container {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	width: 800px;
+}
+
+input {
+	display: none;
+}
+
+.panel-item {
+	border: 1px solid #CCCCCC;
+	border-radius: 3px;
+	margin-bottom: 5px;
+}
+
+.panel-item label {
+	display: block;
+	width: 100%;
+	box-sizing: border-box;
+	padding: 10px 0 10px 20px;
+	background: #F5F5F5;
+	cursor: pointer;
+}
+
+.panel-item div {
+	display: none;
+	padding: 15px;
+}
+
+input[type='radio']:checked~div {
+	display: block;
+}
+
+input[type='radio']:checked+label {
+	border-bottom: 1px solid #CCCCCC;
+}
