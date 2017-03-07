@@ -1,0 +1,95 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+html, body {
+	width: 100%;
+	height: 100%;
+}
+
+body {
+	font-family : "Lucida Grande", Verdana, Lucida, Arial, Helvetica, "宋体", sans-serif;
+}
+
+::-webkit-scrollbar
+{
+	width: 0;
+}
+
+.container {
+	width: 100%;
+	height: 100%;
+	font-size: 0;
+}
+
+#markdown, #relative-html {
+	width: 49%;
+	height: 100%;
+	display: inline-block;
+}
+
+#markdown {
+	font-size: 0;
+	border-right: 2px dotted #CCCCCC;
+	padding-right: 10px;
+	margin-right: 5px;
+}
+
+#markdown #line-num {
+	padding-right: 10px;
+	text-align: right;
+	vertical-align: top;
+	font-size: 13px;
+	display: inline-block;
+	background: #2F3129;
+	width: 40px;
+	height: 100%;
+	color: white;
+	padding-top: 5px;
+}
+
+#markdown textarea {
+	display: inline-block;
+	width: calc(100% - 40px);
+	width: -webkit-calc(100% - 40px);
+	height: 100%;
+	resize: none;
+	background: #272822;
+	color: #FFF;
+	overflow: scroll;
+	line-height: 16px;
+	padding: 5px;
+	text-decoration: none;
+}
+
+#relative-html {
+	overflow: scroll;
+	border-left: 2px dotted #CCCCCC;
+	padding-left: 10px;
+	font-size: 13px;
+}
+
+#relative-html ul li {
+	list-style-type: circle;
+	list-style-position: inside;
+}
+
+.single-reference {
+	background: #FEE9CC;
+}
+
+.more-than-reference {
+	padding: 5px;
+	padding-left: 10px;
+	border-left: 4px solid #CCCCCC;
+}
+
+.block-reference {
+	background: black;
+	padding: 10px 0 10px 20px;
+	margin: 15px;
+	border: 1px solid #DCDCDC;
+	color: white;
+}
