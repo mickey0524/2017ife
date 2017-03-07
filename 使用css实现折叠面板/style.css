@@ -34,13 +34,21 @@ input {
 	cursor: pointer;
 }
 
+.panel-item label:hover {
+	text-decoration: underline;
+}
+
 .panel-item div {
-	display: none;
-	padding: 15px;
+	height: 0;
+	padding: 0 15px;
+	overflow: hidden;
+	transition: all .4s ease-in-out;
 }
 
 input[type='radio']:checked~div {
-	display: block;
+	height: 140px;
+	padding-top: 15px;
+	padding-bottom: 15px;
 }
 
 input[type='radio']:checked+label {
