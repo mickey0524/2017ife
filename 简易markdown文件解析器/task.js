@@ -182,7 +182,7 @@ function dealReference(value) {
  * @params {string} value 前一个处理快传递的数据
  */
 function dealMoreThanReference(value) {
-	var pattern = /<(\w+)\n/g;
+	var pattern = />(\w+)\n/g;
 	var result;
 	while(result = pattern.exec(value)) {
 		var divText = "<div class='more-than-reference'>" + result[1] + "</div>";
@@ -199,7 +199,6 @@ function dealLink(value) {
 	var pattern = /\[(.+?)\]\((.+?)\)/g;	
 	var result;
 	while(result = pattern.exec(value)) {
-		console.log(value);
 		var aText = result[1];
 		var aAttr = result[2];
 		var a = '<a href="' + aAttr + '">' + aText + '</a>';
@@ -219,6 +218,21 @@ function dealBlockReference(value) {
 		var divText = "<div class='block-reference'>" + result[1] + '</div>';
 		value = value.slice(0, result.index) + divText + value.slice(result.index + result[0].length);
 	}
+	return dealSingleLine(value);
+}
+
+/**
+ * 将单行文本元素变为block块
+ * @params {string} value 前一个处理块传递的数据
+ */
+function dealSingleLine(value) {
+	var pattern = /\n([^<>]+?)\n/g;
+	var result;
+	while(result = pattern.exec(value)) {
+		var divText = '<div>' + result[1] + '</div>';
+		value = value.slice(0, result.index) + divText + value.slice(result.index + result[0].length);
+	}
+
 	return value;
 }
 
@@ -230,6 +244,7 @@ function dealBlockReference(value) {
 function changeTextToMarkDown(value) {
 	var value = dealTitle(value);
 	relativeHtml.innerHTML = value;
+	console.log(value);
 }
 
 window.onload = function() {
