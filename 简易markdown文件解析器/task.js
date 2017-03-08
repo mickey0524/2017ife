@@ -188,7 +188,7 @@ function dealMoreThanReference(value) {
 		var divText = "<div class='more-than-reference'>" + result[1] + "</div>";
 		value = value.slice(0, result.index) + divText + value.slice(result.index + result[0].length);
 	}
-	return dealLink(value);
+	return dealPhoto(value);
 }
 
 /**
@@ -205,6 +205,21 @@ function dealLink(value) {
 		value = value.slice(0, result.index) + a + value.slice(result.index + result[0].length);
 	}
 	return dealBlockReference(value);
+}
+
+/**
+ * 处理图片
+ * @params {string} value 前一个数据块传递的数据
+ */
+function dealPhoto(value) {
+	var pattern = /!\[(.+?)\]\((.+?)\)/g;
+	var result;
+	while(result = pattern.exec(value)) {
+		var imgPath = result[2];
+		var img = '<div><img src="' + imgPath + '"></div>';
+		value = value.slice(0, result.index) + img + value.slice(result.index + result[0].length);
+	}
+	return dealLink(value);	
 }
 
 /**
