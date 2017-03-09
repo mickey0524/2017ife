@@ -7,7 +7,37 @@
 	<link rel="stylesheet" type="text/css" href="./css/style.css">
 </head>
 <body>
-	<div class="audio"></div>
+	<div class="audio">
+		<div class="audio-control">
+			<h2 id="music-name"></h2>
+			<h4 id="music-author"></h4>
+			<audio src="">您的浏览器不支持audio</audio>
+			<div class="hand-audio">
+				<span id="now-time">0:00</span>/<span id="all-time">4:15</span>
+				<div class="volume">
+					<i class="fa fa-volume-up"></i>
+					<span id="volume-bottom"></span>
+					<span id="volume-up"></span>
+					<p id="volume-tip">47</p>
+				</div>
+				<div class="progress">
+					<p id="progress-bar-bottom"></p>
+					<p id="progress-bar-up"></p>
+				</div>
+			</div>
+			<div class="audio-bottom-control">
+				<i class="fa fa-heart-o" aria-hidden="true"></i>
+				<i class="fa fa-heart" aria-hidden="true"></i>
+				<i class="fa fa-trash-o" aria-hidden="true"></i>
+				<i class="fa fa-pause" aria-hidden="true"></i>
+				<i class="fa fa-play" aria-hidden="true"></i>
+				<i class="fa fa-step-forward" aria-hidden="true"></i>
+			</div>
+		</div>
+		<div class="audio-avatar">
+			<img src="" width="180px" height="180px">
+		</div>
+	</div>
 <script type="text/javascript" src="./js/jquery.min.js"></script>
 <script type="text/javascript" src="./js/audio.js"></script>
 <script type="text/javascript" src="./js/task.js"></script>

@@ -10,7 +10,9 @@ body {
 .audio {
 	padding: 20px;
 	width: 650px;
-	height: 200px;
+	height: 190px;
+	border: 1px solid #DCDCDC;
+	border-radius: 5px;
 	position: absolute;
 	left: 50%;
 	top: 50%;
@@ -23,26 +25,115 @@ body {
 }
 
 .audio .audio-control h2 {
-	margin-bottom: 10px;
+	margin-bottom: 15px;
 }
 
 .audio .audio-control h4 {
-	margin-bottom: 10px;
+	margin-bottom: 20px;
 	color: #9F9F9F;
 }
 
-audio {
+.audio .audio-control audio {
 	width: 400px;
 	margin-left: -10px;
 	margin-bottom: 40px;
 }
 
+.hand-audio, .volume {
+	position: relative;
+	display: inline-block;
+}
+
+.hand-audio .volume i {
+	cursor: pointer;
+}
+
+.hand-audio .volume:hover #volume-bottom {
+	width: 100px;
+	border-width: 1px;
+}
+
+/*.hand-audio .volume:hover #volume-up {
+	width: 50px;
+}*/
+
+.hand-audio #volume-bottom {
+	position: absolute;
+	left: 20px;
+	top: 5px;
+	vertical-align: middle;
+	display: inline-block;
+	width: 0;
+	height: 6px;
+	border: 0 solid #BBBBBB;
+	border-left-color: #DDDDDD;
+	border-right-color: #DDDDDD;
+	border-bottom-color: transparent;
+	border-radius: 5px;
+	cursor: pointer;
+	transition: all 1s ease-in-out;
+}
+
+.hand-audio #volume-up {
+	position: absolute;
+	left: 20px;
+	top: 5px;
+	vertical-align: middle;
+	display: inline-block;
+	width: 0;
+	height: 6px;
+	background: #2BAE57;	
+	cursor: pointer;
+	border-radius: 5px;
+	transition: all 1s ease-in-out;
+}
+
+.hand-audio .volume #volume-tip {
+	width: 30px;
+	height: 20px;
+	background: black;
+	position: absolute;
+	text-align: center;
+	color: white;
+	border-radius: 4px;
+	top: -25px;
+	left: 0;
+	display: none;
+}
+
+.hand-audio .volume #volume-tip::after {
+	content: '';
+	position: absolute;
+	top: 20px;
+	left: 10px;
+	border-width: 6px;
+	border-style: solid;
+	border-color: black transparent transparent transparent;
+}
+
+.hand-audio .progress #progress-bar-bottom, .hand-audio .progress #progress-bar-up {
+	margin-top: 10px;
+	width: 400px;
+	height: 2px;
+	background: #DDDDDD;	
+	border-radius: 5px;
+	cursor: pointer;
+}
+
+.hand-audio .progress #progress-bar-up {
+	margin-top: -2px;
+	width: 0;
+	background: #2BAE57;
+}
+
 .audio-bottom-control {
-	font-size: 24px;
+	margin-left: 20px;
+	margin-top: 20px;
+	font-size: 20px;
 }
 
 .audio-bottom-control i {
-	margin-right: 20px;
+	margin-right: 25px;
 	display: inline;
 	cursor: pointer;
 }
@@ -55,7 +146,7 @@ audio {
 	display: none;
 }
 .audio-avatar {
-	margin-left: 20px;
+	margin-left: 30px;
 }
 
 .audio-avatar img {
