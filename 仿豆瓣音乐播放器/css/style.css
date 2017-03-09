@@ -1,0 +1,70 @@
+* {
+	margin: 0;
+	right: 0;
+}
+
+body {
+	font-family : 'Comfortaa-Regular', sans-serif;
+}
+
+.audio {
+	padding: 20px;
+	width: 650px;
+	height: 200px;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.audio .audio-control, .audio .audio-avatar {
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.audio .audio-control h2 {
+	margin-bottom: 10px;
+}
+
+.audio .audio-control h4 {
+	margin-bottom: 10px;
+	color: #9F9F9F;
+}
+
+audio {
+	width: 400px;
+	margin-left: -10px;
+	margin-bottom: 40px;
+}
+
+.audio-bottom-control {
+	font-size: 24px;
+}
+
+.audio-bottom-control i {
+	margin-right: 20px;
+	display: inline;
+	cursor: pointer;
+}
+
+.audio-bottom-control .fa-trash-o {
+	margin-right: 200px;
+}
+
+.audio-bottom-control .fa-play, .audio-bottom-control .fa-heart {
+	display: none;
+}
+.audio-avatar {
+	margin-left: 20px;
+}
+
+.audio-avatar img {
+	border-radius: 50%;
+	animation: spin 30s linear infinite;
+}
+
+@keyframes spin {
+	0% { transform: rotate(0deg); }
+	50% { transform: rotate(180deg); }
+	100% { transform: rotate(360deg); }
+}
