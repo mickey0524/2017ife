@@ -1,0 +1,44 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	font-family: 'Microsoft Yahei';
+	color: #9CC8F7;
+}
+
+.tree {
+	width: 300px;
+	margin: 100px auto;
+	position: relative;
+	border: 1px solid #CCCCCC;
+	border-radius: 5px;
+	padding-bottom: 20px;
+}
+
+.tree-item {
+	padding: 20px;
+	padding-bottom: 0;
+	cursor: pointer;
+}
+
+.tree-item .no-child {
+	margin-left: 20px;
+}
+
+.tree-item>.hand-icon {
+	vertical-align: middle;
+	display: inline-block;
+	border-width: 8px;
+	border-style: solid;
+}
+
+.tree-item>.close {
+	border-color: transparent transparent transparent #9CC8F7;
+}
+
+.tree-item>.open {
+	margin-top: 5px;
+	border-color: #9CC8F7 transparent transparent transparent;
+}
