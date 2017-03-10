@@ -21,7 +21,7 @@ Audio.prototype.init = function() {
 	this.element.find('.fa-heart, .fa-heart-o').click(function() { _this.singleLoop(_this); });
 	this.element.find('.fa-trash-o').click(function() { _this.deleteSong(_this); });
 	this.element.find('.fa-step-forward').click(function() {_this.nextSong(_this); });
-	this.element.find('.fa-play, .fa-pause').click(function() { _this.playAndPause(_this); });
+	this.element.find('.fa-play, .fa-pause, .fa-play-circle-o, .fa-pause-circle-o').click(function() { _this.playAndPause(_this); });
 	this.element.find('.volume').hover(function() { $('#volume-up').css('width', _this.volume + 'px');}, function() {$('#volume-up').css('width', 0);})  //动态显示音量
 	this.element.find('.volume span').hover(function() { $('#volume-tip').css('left', _this.volume + 5 + 'px'); $('#volume-tip').text(_this.volume); $('#volume-tip').show(); }, function() { $('#volume-tip').hide(); });  //动态显示音量提示符
 	this.element.find('.volume span').click(function(event) { _this.dealVolume(event, _this); });
@@ -97,11 +97,25 @@ Audio.prototype.playAndPause = function(_this) {
 		_this.element.find('.fa-pause').css('display', 'inline');
 		_this.element.find('.fa-play').css('display', 'none');
 		_this.element.find('audio')[0].play();
+		_this.element.find('.audio-avatar i')[0].className = 'fa fa-pause-circle-o';
+		_this.element.find('.audio-avatar .control').css({
+			
+			'bottom': '40px',
+			'right': '40px',
+			'font-size' : '28px'
+		});
 	}
 	else {
 		_this.element.find('.fa-pause').css('display', 'none');
 		_this.element.find('.fa-play').css('display', 'inline');
-		_this.element.find('audio')[0].pause();		
+		_this.element.find('audio')[0].pause();	
+		_this.element.find('.audio-avatar i')[0].className = 'fa fa-play-circle-o';
+		_this.element.find('.audio-avatar .control').css({
+			
+			"bottom": '70px',
+			"right": '70px',
+			"font-size" : '36px'
+		});
 	}
 }
 
