@@ -9,39 +9,69 @@ page.onConsoleMessage = function(mes) {
 	console.log(mes);
 }
 
-if(system.args.length < 3) {
+if(system.args.length !== 3) {
 	console.log('缺少搜索关键字!');
 	phantom.exit();
 }
 
 else {
-	url = 'https://www.baidu.com/s?wd=' + encodeURIComponent(system.args[1]);
+	if(!config[system.args[2]]) {
+		console.log('不支持该机器');
+		phantom.exit();
+	}
+	url = 'https://www.baidu.com/s?ie=utf-8&f=8&wd=' + encodeURIComponent(system.args[1]);
 	page.settings.userAgent = config[system.args[2]]['userAgent'];
 	var size = config[system.args[2]]['size'].split('*');
-	page.viewportSize = {
+	size = {
 		width : size[0].trim(),
-		heigth : size[1].trim()
-	};
+		height : size[1].trim()
+	}
+	page.viewportSize = size;
 	page.open(url, function(status) {
 		if(status === 'success') {
-			page.includeJs("http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js", function() {
+			page.includeJs("http://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js", function() {
 				var dataList = page.evaluate(function() {
-					var result = $('.c-container');
 					var dataList = [];
-					result.each(function(index, item) {
-						var title = $(item).find('.t').children('a').text() || 'none';
-						var info = $(item).find('.c-abstract').text() || $(item).find('.c-span-last').text() || 'none';
-						var link = $(item).find('.t').children('a:first-child').attr('href') || 'none';
-						var pic = $(item).find('.c-img').attr('src') || 'none';
-						dataList.push({
-							title : title,
-							info : info,
-							link : link,
-							pic : pic
-						});
-					});
-					return dataList;
-				});
+						/**
+						 * pc / ipad
+						 */
+						if($('#content_left').length != 0 || $('.bds-result-lists').length != 0) {
+							var result = $('.c-container');
+							result.each(function(index, item) {
+								var title = $(item).find('.t').children('a').text() || 'none';
+								var info = $(item).find('.c-abstract').text() || $(item).find('.c-span-last').text() || 'none';
+								var link = $(item).find('.t').children('a:first-child').attr('href') || 'none';
+								var pic = $(item).find('.c-img').attr('src') || 'none';
+								dataList.push({
+									title : title,
+									info : info,
+									link : link,
+									pic : pic
+								});
+							});							
+						}
+						/**
+						 * iphone
+						 */
+						else if($('#results').length != 0) {
+							var result = $('.result .c-container');
+							result.each(function(index, item) {
+								var title = $(item).find('.c-title').text() || 'none';
+								if(title !== 'none') {
+									var info = $(item).find('.c-line-clamp2').text() || $(item).find('.c-line-clamp3').text() || 'none';
+									var link = $(item).children('a:first-child').attr('href') || 'none';
+									var pic = $(item).find('.c-img').attr('src') || 'none';
+									dataList.push({
+										title : title,
+										info : info,
+										link : link,
+										pic : pic
+									});
+								}
+							});
+						}
+			        return dataList;
+		   		});
 				dealSuccess(dataList);
 				console.log(JSON.stringify(data, undefined, 4));
 				phantom.exit();
