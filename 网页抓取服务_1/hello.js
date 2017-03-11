@@ -50,7 +50,7 @@ function dealError() {
 	data.code = 0;
 	data.msg = '抓取失败';
 	data.word = system.args[1];
-	data.time = Date().now - time;
+	data.time = Date.now() - time;
 	data.dataList = [];
 }
 
@@ -58,7 +58,7 @@ function dealSuccess(dataList) {
 	data.code = 1;
 	data.msg = '抓取成功';
 	data.word = system.args[1];
-	data.time = Date().now - time;
+	data.time = Date.now() - time;
 	data.dataList = dataList;
 }
 
