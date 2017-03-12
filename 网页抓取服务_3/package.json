@@ -1,0 +1,16 @@
+{
+  "name": "phantomjs_3",
+  "version": "1.0.0",
+  "description": "",
+  "main": "task.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "child_process": "^1.0.2",
+    "iconv-lite": "^0.4.15",
+    "mongoose": "^4.8.6"
+  }
+}
