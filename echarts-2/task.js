@@ -50,7 +50,8 @@ var option = {
 				normal: {
 					color: '#33748A'
 				}
-			}
+			},
+			barWidth: '15px'
 		},
 		{
 			name : 'GDP',
