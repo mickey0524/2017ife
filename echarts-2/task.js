@@ -14,16 +14,30 @@ var option = {
 		data : ['Population', 'GDP'],
 		align : 'left'
 	},
-	xAxis : {
-		position: 'bottom',
+	xAxis : [
+	{
 		data: ["衬衫","羊毛衫","雪纺衫","裤子","高跟鞋","袜子"],
 		axisLine: {
-			onZero: false
+			show: true,
+			onZero: false,
+			lineStyle: {
+				width: 2
+			}
 		},
 		axisTick: {
 			inside: true
 		}
 	},
+	{
+		z: 10,
+	    axisLine : {                               //上面的红线
+            show : true,
+            lineStyle : {
+                color : "red",
+                width : 3
+	    	}	
+	    }	
+	}],
 	yAxis : {
 		inverse: true,
 		position: 'right',
@@ -36,7 +50,7 @@ var option = {
 		splitLine: {
 		    lineStyle: {
 		        // 使用深浅的间隔色
-		        color: ['red', 'white', 'white', 'white', 'black'],
+		        color: 'white',
 		        width: 2
 		    } 
 		}
